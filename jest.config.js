@@ -19,9 +19,6 @@ module.exports = {
   collectCoverageFrom: [
     'src/**/*.{js,ts,tsx}'
   ],
-  transformIgnorePatterns: [
-    'node_modules/(?!vue-router)'
-  ],
   snapshotSerializers: [
     'jest-serializer-html'
   ],

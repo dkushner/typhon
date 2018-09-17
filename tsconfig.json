@@ -58,7 +58,7 @@
     "emitDecoratorMetadata": true             /* Enables experimental support for emitting type metadata for decorators. */
   },
   "include": [
-    "src/*", ".eslintrc.js"
+    "src/*", ".eslintrc.js", "src/hydra/ConsentSession.ts", "src/hydra/Key.ts"
   ],
   "exclude": [
     "**/*.{spec,test}.ts",
