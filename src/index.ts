@@ -1,5 +1,5 @@
-import axios, { AxiosRequestConfig, AxiosInstance, AxiosResponse } from 'axios'
-import { serialize, deserialize, Clazz, getDefaultModelSchema } from 'serializr'
+import axios, { AxiosRequestConfig, AxiosInstance } from 'axios'
+import { serialize, deserialize } from 'serializr'
 import * as Hydra from './hydra'
 
 export type ClientOptions = AxiosRequestConfig
@@ -22,14 +22,6 @@ class ClientBase {
 
   constructor (base: string, options: HydraClientOptions = { }) {
     this.client = getClient(base, options.overrides)
-  }
-
-  protected inflate<T extends Serializable<T>> (data: any | any[], clazz: T): T {
-    return new clazz().inflate(data)
-  }
-
-  protected deflate<T> (data: T): any {
-    return serialize(data)
   }
 }
 

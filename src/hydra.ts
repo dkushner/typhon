@@ -1,4 +1,4 @@
-import { serializable as Serializable, list, primitive, date, object, alias, PropSchema } from 'serializr'
+import { serializable as Serializable, list, primitive, date, object, alias } from 'serializr'
 import { anyType, timestamp } from './utilities'
 
 export class Key {
