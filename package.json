@@ -37,9 +37,6 @@
     "url": "https://github.com/dkushner/typhon/issues"
   },
   "homepage": "https://github.com/dkushner/typhon#readme",
-  "dependencies": {
-    "vue-property-decorator": "^7.0.0"
-  },
   "devDependencies": {
     "@trust/jwk": "^0.3.3",
     "@types/jest": "^23.3.2",
