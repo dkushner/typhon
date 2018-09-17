@@ -19,7 +19,7 @@ export default class UserInfo {
 
   @Serializable(alias('given_name'))
   givenName?: string
-  
+
   @Serializable
   locale?: string
 

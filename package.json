@@ -1,6 +1,6 @@
 {
   "name": "typon",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Strongly typed HTTP client for Ory Hydra.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

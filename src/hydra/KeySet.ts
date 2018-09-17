@@ -5,4 +5,3 @@ export default class KeySet {
   @Serializable(list(object(Key)))
   keys?: Key[]
 }
-

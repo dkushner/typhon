@@ -21,89 +21,89 @@ import TokenIntrospection from './TokenIntrospection'
 import UserInfo from './UserInfo'
 import Version from './Version'
 
-export type GrantType = 'client_credentials' | 'authorize_code' | 'implicit' | 'refresh_token' 
+export type GrantType = 'client_credentials' | 'authorize_code' | 'implicit' | 'refresh_token'
 export type ResponseType = 'id_token' | 'code' | 'token'
 
 export class HydraClient extends ClientBase {
-  async getClients (limit: number, offset: number): Promise<Client[]> {
+  async getClients(limit: number, offset: number): Promise<Client[]> {
     const { data } = await this.client.get('/clients', {
-      params: { limit, offset }
+      params: { limit, offset },
     })
 
     return deserialize(Client, [].concat(data))
   }
 
-  async createClient (client: Client): Promise<Client> {
+  async createClient(client: Client): Promise<Client> {
     const { data } = await this.client.post('/clients', serialize(client))
     return deserialize(Client, data)
   }
 
-  async getClient (id: string): Promise<Client> {
+  async getClient(id: string): Promise<Client> {
     const { data } = await this.client.get(`/clients/${id}`)
     return deserialize(Client, data)
   }
 
-  async updateClient (id: string, patch: Client): Promise<Client> {
+  async updateClient(id: string, patch: Client): Promise<Client> {
     const { data } = await this.client.put(`/clients/${id}`, serialize(patch))
     return deserialize(Client, data)
   }
 
-  async deleteClient (id: string): Promise<void> {
+  async deleteClient(id: string): Promise<void> {
     await this.client.delete(`/clients/${id}`)
   }
 
-  async getConsent (challenge: string): Promise<Consent> {
+  async getConsent(challenge: string): Promise<Consent> {
     const { data } = await this.client.get(`/oauth2/auth/requests/consent/${challenge}`)
     return deserialize(Consent, data)
   }
 
-  async acceptConsent (challenge: string, acceptance: ConsentAcceptance): Promise<ConsentCompletion> {
+  async acceptConsent(challenge: string, acceptance: ConsentAcceptance): Promise<ConsentCompletion> {
     const { data } = await this.client.put(`/oauth2/auth/requests/consent/${challenge}/accept`, serialize(acceptance))
     return deserialize(ConsentCompletion, data)
   }
 
-  async rejectConsent (challenge: string, rejection: ConsentRejection): Promise<ConsentCompletion> {
+  async rejectConsent(challenge: string, rejection: ConsentRejection): Promise<ConsentCompletion> {
     const { data } = await this.client.put(`/oauth2/auth/requests/consent/${challenge}/reject`, serialize(rejection))
     return deserialize(ConsentCompletion, data)
   }
 
-  async getLogin (challenge: string): Promise<Login> {
+  async getLogin(challenge: string): Promise<Login> {
     const { data } = await this.client.get(`/oauth2/auth/requests/login/${challenge}`)
     return deserialize(Login, data)
   }
 
-  async acceptLogin (challenge: string, acceptance: LoginAcceptance): Promise<LoginCompletion> {
+  async acceptLogin(challenge: string, acceptance: LoginAcceptance): Promise<LoginCompletion> {
     const { data } = await this.client.put(`/oauth2/auth/requests/login/${challenge}/accept`, serialize(acceptance))
     return deserialize(LoginCompletion, data)
   }
 
-  async rejectLogin (challenge: string, rejection: LoginRejection): Promise<LoginCompletion> {
+  async rejectLogin(challenge: string, rejection: LoginRejection): Promise<LoginCompletion> {
     const { data } = await this.client.put(`/oauth2/auth/requests/login/${challenge}/reject`, serialize(rejection))
     return deserialize(LoginCompletion, data)
   }
 
-  async getSessions (user: string): Promise<ConsentRecord[]> {
+  async getSessions(user: string): Promise<ConsentRecord[]> {
     const { data } = await this.client.get(`/oauth2/auth/sessions/consent/${user}`)
     return deserialize(ConsentRecord, [].concat(data))
   }
 
-  async revokeConsent (user: string): Promise<void> {
+  async revokeConsent(user: string): Promise<void> {
     await this.client.delete(`/oauth2/auth/sessions/consent/${user}`)
   }
 
-  async revokeClientConsent (user: string, client: string): Promise<void> {
+  async revokeClientConsent(user: string, client: string): Promise<void> {
     await this.client.delete(`/oauth2/auth/sessions/consent/${user}/${client}`)
   }
 
-  async revokeLogin (user: string): Promise<void> {
+  async revokeLogin(user: string): Promise<void> {
     await this.client.delete(`/oauth2/auth/sessions/login/${user}`)
   }
 
-  async flushTokens (criteria: FlushCriteria): Promise<void> {
+  async flushTokens(criteria: FlushCriteria): Promise<void> {
     await this.client.post(`/oauth2/flush`, serialize(criteria))
   }
 
-  async introspectToken (token: string, scope?: string | string[]): Promise<TokenIntrospection> {
+  async introspectToken(token: string, scope?: string | string[]): Promise<TokenIntrospection> {
     const form = new FormData()
     form.set('token', token)
 
@@ -117,73 +117,72 @@ export class HydraClient extends ClientBase {
 
     const { data } = await this.client.post(`/oauth2/introspect`, form, {
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
     })
 
     return deserialize(TokenIntrospection, data)
   }
 
-  async revokeToken (token: string): Promise<void> {
+  async revokeToken(token: string): Promise<void> {
     const form = new FormData()
     form.set('token', token)
 
     await this.client.post(`/oauth2/revoke`, form, {
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
     })
   }
 
-  async getUserInfo (token: string): Promise<UserInfo> {
+  async getUserInfo(token: string): Promise<UserInfo> {
     const { data } = await this.client.post(`/userinfo`, null, {
       headers: {
-        'Authorization': `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     })
 
     return deserialize(UserInfo, data)
   }
 
-  async getKeys (set: string): Promise<KeySet> {
+  async getKeys(set: string): Promise<KeySet> {
     const { data } = await this.client.get(`/keys/${set}`)
     return deserialize(KeySet, data)
   }
 
-  async updateKeys (set: string, patch: KeySet): Promise<KeySet> {
+  async updateKeys(set: string, patch: KeySet): Promise<KeySet> {
     const { data } = await this.client.put(`/keys/${set}`, serialize(patch))
     return deserialize(KeySet, data)
   }
 
-  async generateKey (set: string, parameters: KeyGenerationParameters): Promise<KeySet> {
+  async generateKey(set: string, parameters: KeyGenerationParameters): Promise<KeySet> {
     const { data } = await this.client.post(`/keys/${set}`, serialize(parameters))
     return deserialize(KeySet, data)
   }
 
-  async deleteKeys (set: string): Promise<void> {
+  async deleteKeys(set: string): Promise<void> {
     await this.client.delete(`/keys/${set}`)
   }
 
-  async getKey (set: string, id: string): Promise<Key> {
+  async getKey(set: string, id: string): Promise<Key> {
     const { data } = await this.client.get(`/key/${set}/${id}`)
     return deserialize(Key, data)
   }
 
-  async updateKey (set: string, id: string, patch: Key): Promise<Key> {
+  async updateKey(set: string, id: string, patch: Key): Promise<Key> {
     const { data } = await this.client.put(`/key/${set}/${id}`, serialize(patch))
     return deserialize(Key, data)
   }
 
-  async deleteKey (set: string, id: string): Promise<void> {
+  async deleteKey(set: string, id: string): Promise<void> {
     await this.client.delete(`/key/${set}/${id}`)
   }
 
-  async version (): Promise<Version> {
+  async version(): Promise<Version> {
     const { data } = await this.client.get(`/version`)
     return deserialize(Version, data)
   }
 }
-
 
 export {
   Client,
@@ -205,5 +204,5 @@ export {
   OpenIdContext,
   TokenIntrospection,
   UserInfo,
-  Version
+  Version,
 }
