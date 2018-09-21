@@ -1,6 +1,6 @@
 import { alias, serializable as Serializable } from 'serializr'
 
-export default class Error {
+export class Error {
   @Serializable
   error?: string
 

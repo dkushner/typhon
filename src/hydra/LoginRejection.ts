@@ -1,6 +1,6 @@
 import { alias, serializable as Serializable } from 'serializr'
 
-export default class LoginRejection {
+export class LoginRejection {
   @Serializable
   error?: string
 

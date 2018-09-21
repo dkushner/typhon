@@ -1,7 +1,7 @@
 import { alias, serializable as Serializable } from 'serializr'
 import { anyType } from '../utilities'
 
-export default class ConsentSession {
+export class ConsentSession {
   @Serializable(alias('access_token', anyType()))
   accessToken?: { [key: string]: any }
 

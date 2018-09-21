@@ -1,6 +1,6 @@
 import { alias, date, serializable as Serializable } from 'serializr'
 
-export default class FlushCriteria {
+export class FlushCriteria {
   @Serializable(alias('notAfter', date()))
   until?: Date
 }

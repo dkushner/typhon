@@ -1,7 +1,7 @@
 import { alias, date, serializable as Serializable } from 'serializr'
 import { timestamp } from '../utilities'
 
-export default class UserInfo {
+export class UserInfo {
   @Serializable(date())
   birthdate?: Date
 

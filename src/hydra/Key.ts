@@ -1,6 +1,6 @@
 import { alias, list, primitive, serializable as Serializable } from 'serializr'
 
-export default class Key {
+export class Key {
   @Serializable(alias('kid'))
   id?: string
 

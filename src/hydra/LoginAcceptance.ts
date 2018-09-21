@@ -1,6 +1,6 @@
 import { alias, serializable as Serializable } from 'serializr'
 
-export default class LoginAcceptance {
+export class LoginAcceptance {
   @Serializable(alias('acr'))
   authenticationClassReference?: string
 

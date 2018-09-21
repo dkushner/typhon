@@ -1,8 +1,8 @@
 import { alias, list, object, primitive, serializable as Serializable } from 'serializr'
-import Client from './Client'
-import OpenIdContext from './OpenIdContext'
+import { Client } from './Client'
+import { OpenIdContext } from './OpenIdContext'
 
-export default class Consent {
+export class Consent {
   @Serializable
   challenge?: string
 

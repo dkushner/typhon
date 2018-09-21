@@ -1,7 +1,7 @@
 import { alias, list, primitive, serializable as Serializable } from 'serializr'
 import { anyType, timestamp } from '../utilities'
 
-export default class TokenIntrospection {
+export class TokenIntrospection {
   /**
    * Whether or not the token is currently active.
    */

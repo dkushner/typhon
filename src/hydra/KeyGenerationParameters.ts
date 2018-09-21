@@ -1,6 +1,6 @@
 import { alias, serializable as Serializable } from 'serializr'
 
-export default class KeyGenerationParameters {
+export class KeyGenerationParameters {
   @Serializable(alias('alg'))
   algorithm?: string
 

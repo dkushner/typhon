@@ -1,28 +1,27 @@
 import { deserialize, serialize } from 'serializr'
 import { ClientBase } from '../index'
-import Client from './Client'
-import Consent from './Consent'
-import ConsentAcceptance from './ConsentAcceptance'
-import ConsentCompletion from './ConsentCompletion'
-import ConsentRecord from './ConsentRecord'
-import ConsentRejection from './ConsentRejection'
-import ConsentSession from './ConsentSession'
-import Error from './Error'
-import FlushCriteria from './FlushCriteria'
-import Key from './Key'
-import KeyGenerationParameters from './KeyGenerationParameters'
-import KeySet from './KeySet'
-import Login from './Login'
-import LoginAcceptance from './LoginAcceptance'
-import LoginCompletion from './LoginCompletion'
-import LoginRejection from './LoginRejection'
-import OpenIdContext from './OpenIdContext'
-import TokenIntrospection from './TokenIntrospection'
-import UserInfo from './UserInfo'
-import Version from './Version'
-
-export type GrantType = 'client_credentials' | 'authorize_code' | 'implicit' | 'refresh_token'
-export type ResponseType = 'id_token' | 'code' | 'token'
+import { Client } from './Client'
+import { Consent } from './Consent'
+import { ConsentAcceptance } from './ConsentAcceptance'
+import { ConsentCompletion } from './ConsentCompletion'
+import { ConsentRecord } from './ConsentRecord'
+import { ConsentRejection } from './ConsentRejection'
+import { ConsentSession } from './ConsentSession'
+import { Error } from './Error'
+import { FlushCriteria } from './FlushCriteria'
+import { GrantType } from './GrantType'
+import { Key } from './Key'
+import { KeyGenerationParameters } from './KeyGenerationParameters'
+import { KeySet } from './KeySet'
+import { Login } from './Login'
+import { LoginAcceptance } from './LoginAcceptance'
+import { LoginCompletion } from './LoginCompletion'
+import { LoginRejection } from './LoginRejection'
+import { OpenIdContext } from './OpenIdContext'
+import { ResponseType } from './ResponseType'
+import { TokenIntrospection } from './TokenIntrospection'
+import { UserInfo } from './UserInfo'
+import { Version } from './Version'
 
 export class HydraClient extends ClientBase {
   async getClients(limit: number, offset: number): Promise<Client[]> {
@@ -194,6 +193,7 @@ export {
   ConsentSession,
   Error,
   FlushCriteria,
+  GrantType,
   Key,
   KeyGenerationParameters,
   KeySet,
@@ -202,6 +202,7 @@ export {
   LoginCompletion,
   LoginRejection,
   OpenIdContext,
+  ResponseType,
   TokenIntrospection,
   UserInfo,
   Version,

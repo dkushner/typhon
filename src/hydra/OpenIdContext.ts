@@ -1,7 +1,7 @@
 import { alias, list, primitive, serializable as Serializable } from 'serializr'
 import { anyType } from '../utilities'
 
-export default class OpenIdContext {
+export class OpenIdContext {
   @Serializable(alias('acr_values', list(primitive())))
   authenticationClassReferences?: string[]
 
