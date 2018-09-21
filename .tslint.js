@@ -21,6 +21,7 @@ module.exports = {
     'no-implicit-dependencies': [true, 'dev'],
     'array-type': [true, 'array'],
     'no-console': false,
+    'max-classes-per-file': [true, 5, 'exclude-class-expressions'],
     'use-type-alias': true,
     'no-inferrable-types': true,
     'unified-signatures': true,
