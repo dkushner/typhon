@@ -1,6 +1,7 @@
 import { alias, date, list, object, primitive, serializable as Serializable } from 'serializr'
 import { GrantType } from './index'
 import KeySet from './KeySet'
+import { ResponseType } from './index'
 
 export default class Client {
   @Serializable(alias('allowed_cors_origins', list(primitive())))
