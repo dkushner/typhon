@@ -1,6 +1,6 @@
 {
   "name": "typhon",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Strongly typed HTTP client for Ory Hydra.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -69,5 +69,5 @@
     "webpack-cli": "^3.1.0",
     "webpack-merge": "^4.1.4"
   },
-  "peerDependencies": { }
+  "peerDependencies": {}
 }
